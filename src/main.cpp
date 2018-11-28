@@ -1,11 +1,14 @@
 #include <iostream>
 
 #include "Test.h"
+#include "ITest.h"
 #include "TestSuite.h"
 #include "Assertion.h"
 
+
 class Testing : public smalltest::Test<Testing> {
 public:
+
 	Testing() :  Test("Testing", this) {
 		registerTest("Test1", &Testing::test1);
 		registerTest("Test2", &Testing::test2);		
@@ -25,9 +28,10 @@ public:
 	}
 };
 
+
 int main() {
-	smalltest::TestSuite suite;
-	suite.registerTest(new Testing());
+	smalltest::TestSuite& suite = smalltest::TestSuite::getInstance();
+	suite.registerTest(std::shared_ptr<smalltest::ITest>(new Testing()));
 	suite.runTests();
 
 	return 0;

@@ -4,18 +4,21 @@
 
 namespace smalltest {
 
+TestSuite TestSuite::suite;
+
 TestSuite::TestSuite() :
 	console_(new Console())	
 {
 }
 
 TestSuite::~TestSuite() {
-    for (auto test : tests_) {
-       delete test;
-    }
 }
 
-void TestSuite::registerTest(ITest* test) {
+TestSuite& TestSuite::getInstance() {
+	return suite;
+}
+
+void TestSuite::registerTest(std::shared_ptr<ITest> test) {
     tests_.insert(test);
 }
 

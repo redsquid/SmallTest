@@ -11,14 +11,16 @@ namespace smalltest {
 
 class TestSuite {
 public:
-    TestSuite();
     virtual ~TestSuite();
-    void registerTest(ITest* test);
+    static TestSuite& getInstance();
+	void registerTest(std::shared_ptr<ITest> test);
     void runTests();
 
 private:
+	TestSuite();
 	void write(const std::vector<Result>& results);
-    std::set<ITest*> tests_;
+    static TestSuite suite;
+	std::set<std::shared_ptr<ITest> > tests_;
 	std::unique_ptr<IOutput> console_;
 };
 
