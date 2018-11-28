@@ -20,9 +20,9 @@ public:
 		for(auto& p : tests) {
 			try {
 				(obj_->*p.second)();
-				results.push_back(Result::success(p.first));
+				results.push_back(Result::success(name_, p.first));
 			} catch(TestException e) {
-				results.push_back(Result::fail(p.first, e.getMessage()));
+				results.push_back(Result::fail(name_, p.first, e.getMessage()));
 			}
 		}
 		return results;

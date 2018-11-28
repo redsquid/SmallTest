@@ -9,12 +9,7 @@ class Console : public IOutput {
 public:
 	Console();
 	virtual ~Console();
-	void write(const std::string& name, const std::vector<Result>& results) override;
-
-private:
-	static void writeHeader(std::string name);
-	static void writeTestSuccess(std::string name);
-	static void writeTestFail(std::string name, std::string message);
+	void write(const Result& results) override;
 };
 
 } // namespace smalltest

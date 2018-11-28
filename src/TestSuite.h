@@ -2,9 +2,10 @@
 #define TESTSUITE_H
 
 #include "ITest.h"
-#include "Console.h"
+#include "IOutput.h"
 
 #include <set>
+#include <memory>
 
 namespace smalltest {
 
@@ -16,9 +17,9 @@ public:
     void runTests();
 
 private:
-	void write(const std::string& name, const std::vector<Result>& results);
+	void write(const std::vector<Result>& results);
     std::set<ITest*> tests_;
-	Console console_;
+	std::unique_ptr<IOutput> console_;
 };
 
 } // namespace smalltest

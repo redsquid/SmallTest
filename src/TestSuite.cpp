@@ -1,10 +1,12 @@
 #include "TestSuite.h"
 
-#include <iostream>
+#include "Console.h"
 
 namespace smalltest {
 
-TestSuite::TestSuite() {
+TestSuite::TestSuite() :
+	console_(new Console())	
+{
 }
 
 TestSuite::~TestSuite() {
@@ -18,14 +20,17 @@ void TestSuite::registerTest(ITest* test) {
 }
 
 void TestSuite::runTests() {
+	std::vector<Result> result;
 	for (auto& test : tests_) {
-		std::vector<Result> res = test->test();
-		write(test->getName(), res);
+		std::vector<Result> r = test->test();
+		write(r);
     }
 }
 
-void TestSuite::write(const std::string& name, const std::vector<Result>& results) {
-	console_.write(name, results);
+void TestSuite::write(const std::vector<Result>& results) {
+	for(auto& r : results) {
+		console_->write(r);
+	}
 }
 
 } //namespace smalltest

@@ -3,14 +3,12 @@
 
 #include "Result.h"
 
-#include <vector>
-
 namespace smalltest {
 
 class IOutput {
 public:
 	virtual ~IOutput() {}
-	virtual void write(const std::string& name, const std::vector<Result>& results) = 0;
+	virtual void write(const Result& result) = 0;
 };
 
 } //namespace smalltest

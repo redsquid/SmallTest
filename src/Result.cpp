@@ -2,8 +2,9 @@
 
 namespace smalltest {
 
-Result::Result(bool success, std::string name, std::string message) :
+Result::Result(bool success, const std::string clazz, const std::string& name, const std::string& message) :
 	success_(success),
+	clazz_(clazz),
 	name_(name),
 	message_(message)
 {
@@ -12,19 +13,23 @@ Result::Result(bool success, std::string name, std::string message) :
 Result::~Result() {
 }
 
-Result Result::success(std::string name) {
-	return Result(true, name, "success");
+Result Result::success(const std::string& clazz, const std::string& name) {
+	return Result(true, clazz, name, "success");
 }
 
-Result Result::fail(std::string name, std::string message) {
-	return Result(false, name, message);
+Result Result::fail(const std::string& clazz, const std::string& name, const std::string& message) {
+	return Result(false, clazz, name, message);
 }
 
 bool Result::isSuccess() const {
 	return success_;
 }
 
-std::string Result::getName() const {
+std::string Result::getClassName() const {
+	return clazz_;
+}
+
+std::string Result::getTestName() const {
 	return name_;
 }
 
