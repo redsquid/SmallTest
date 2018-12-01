@@ -1,39 +1,61 @@
-#include <iostream>
 
-#include "Test.h"
-#include "ITest.h"
-#include "TestSuite.h"
-#include "Assertion.h"
+#include "Tests.hpp"
+#include "Assertion.hpp"
+#include "Macros.hpp"
+
+namespace mytesting {
 
 
-class Testing : public smalltest::Test<Testing> {
-public:
+	SMALLTEST("MyTesting")
+	
+	const int N = 1;
+	const int M = 2;
 
-	Testing() :  Test("Testing", this) {
-		registerTest("Test1", &Testing::test1);
-		registerTest("Test2", &Testing::test2);		
-	}
-
-	void test1() const {
-		int n = 0;
-		int m = 1;
-		smalltest::assertion::assertEquals(n, m);
-	}
-
-	void test2() const {
+	TEST(test1) {
 		int n = 1;
-		int m = 1;
-		smalltest::assertion::assertEquals(n, m);
-
+		int m = 2;
+		smalltest::assertion::equals(n, N);
+		smalltest::assertion::equals(m, M);
 	}
-};
+
+	TEST(test2) {
+		smalltest::assertion::equals(N, M);
+	}
+
+	TEST(test3) {
+		double a = 0.1;
+		double b = 0.2;
+		smalltest::assertion::equals(a, b);
+	}
+
+	TEST(test4) {
+		double a = 0.01;
+		double b = 0.02;
+		smalltest::assertion::equals(a, b, 0.1);
+	}
+
+}
+
+
+namespace yourtesting {
+	
+	SMALLTEST("YourTesting")
+
+	int N = 5;
+	
+	TEST(yourtest1) {
+		smalltest::assertion::equals(5, N);
+	}
+
+	TEST(yourtest2) {
+		smalltest::assertion::equals(1, N);
+	}
+
+}
 
 
 int main() {
-	smalltest::TestSuite& suite = smalltest::TestSuite::getInstance();
-	suite.registerTest(std::shared_ptr<smalltest::ITest>(new Testing()));
-	suite.runTests();
-
+	SMALLTEST_RUN
 	return 0;
 }
 

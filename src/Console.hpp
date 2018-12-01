@@ -1,7 +1,7 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-#include "IOutput.h"
+#include "IOutput.hpp"
 
 namespace smalltest {
 

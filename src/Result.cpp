@@ -1,4 +1,4 @@
-#include "Result.h"
+#include "Result.hpp"
 
 namespace smalltest {
 

@@ -1,10 +1,10 @@
-#include "TestSuite.h"
+#include "TestSuite.hpp"
 
-#include "Console.h"
+#include "Console.hpp"
 
 namespace smalltest {
 
-TestSuite TestSuite::suite;
+TestSuite* TestSuite::suite = nullptr;
 
 TestSuite::TestSuite() :
 	console_(new Console())	
@@ -14,18 +14,21 @@ TestSuite::TestSuite() :
 TestSuite::~TestSuite() {
 }
 
-TestSuite& TestSuite::getInstance() {
-	return suite;
+TestSuite& TestSuite::instance() {
+	if(suite == nullptr) {
+		suite = new TestSuite();
+	}
+	return *suite;
 }
 
-void TestSuite::registerTest(std::shared_ptr<ITest> test) {
+void TestSuite::add(ITests* test) {
     tests_.insert(test);
 }
 
-void TestSuite::runTests() {
+void TestSuite::run() {
 	std::vector<Result> result;
 	for (auto& test : tests_) {
-		std::vector<Result> r = test->test();
+		std::vector<Result> r = test->run();
 		write(r);
     }
 }

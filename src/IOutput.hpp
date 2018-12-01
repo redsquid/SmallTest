@@ -1,7 +1,7 @@
 #ifndef IOUTPUT_H
 #define IOUTPUT_H
 
-#include "Result.h"
+#include "Result.hpp"
 
 namespace smalltest {
 
