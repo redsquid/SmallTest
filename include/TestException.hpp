@@ -1,5 +1,4 @@
-#ifndef TESTEXCEPTION_H
-#define TESTEXCEPTION_H
+#pragma once
 
 #include <string>
 
@@ -18,7 +17,4 @@ private:
 };
 
 } // namespace smalltest
-
-
-#endif // TESTEXCEPTION_H
 

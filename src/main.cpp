@@ -1,10 +1,6 @@
-
-#include "Tests.hpp"
-#include "Assertion.hpp"
-#include "Macros.hpp"
+#include "../SmallTest.h"
 
 namespace mytesting {
-
 
 	SMALLTEST("MyTesting")
 	
@@ -33,7 +29,6 @@ namespace mytesting {
 		double b = 0.02;
 		smalltest::assertion::equals(a, b, 0.1);
 	}
-
 }
 
 
@@ -50,9 +45,7 @@ namespace yourtesting {
 	TEST(yourtest2) {
 		smalltest::assertion::equals(1, N);
 	}
-
 }
-
 
 int main() {
 	SMALLTEST_RUN

@@ -1,11 +1,11 @@
-#ifndef MACROS_H
-#define MACROS_H
+#pragma once
 
 #include "TestSuite.hpp"
 
 namespace smalltest {
 
 struct SuiteSupport {SuiteSupport(ITests& t) {smalltest::TestSuite::instance().add(&t);}};
+
 struct TestsSupport {TestsSupport(smalltest::ITests& tests, std::string n, void(*t)()) {tests.add(n, t);}}; 
 
 #define __SMALLTEST_PRFX __smalltest_
@@ -29,6 +29,4 @@ struct TestsSupport {TestsSupport(smalltest::ITests& tests, std::string n, void(
 
 
 }; //namespace smalltest
-
-#endif // MACROS_H
 

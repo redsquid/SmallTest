@@ -1,5 +1,4 @@
-#ifndef ASSERTION_H
-#define ASSERTION_H
+#pragma once
 
 #include "TestException.hpp"
 
@@ -42,6 +41,4 @@ void assert_false(bool value) {
 }
 
 } //namespace smalltest::assertion
-
-#endif // ASSERTION_H
 
