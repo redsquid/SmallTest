@@ -2,7 +2,7 @@
 
 SmallTest is a simplified single-header library for unit testing. If you're going to create
 small programm likes "HelloWorld.cpp" :) using the TDD approach and don't want to use large
-framework likes gtest - SmallTest is whot you need.
+framework likes gtest - SmallTest is what you need.
 
 0. Include SmallTest.h
 1. Create namespace for unit test
