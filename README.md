@@ -12,6 +12,7 @@ framework likes gtest - SmallTest is what you need.
 
 Example:
 
+```cpp
 #include "SmallTest.h"
 
 namespace mytesting {
@@ -37,3 +38,4 @@ int main() {
 	SMALLTEST_RUN
 	return 0;
 }
+```
